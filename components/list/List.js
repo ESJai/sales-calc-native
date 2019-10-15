@@ -5,6 +5,7 @@ import { FlatGrid } from 'react-native-super-grid';
 import ItemData from '../../data/data.json';
 
 import Item from './item/Item'
+import { vh } from 'react-native-expo-viewport-units';
 
 const styles = StyleSheet.create({
 
@@ -12,10 +13,11 @@ const styles = StyleSheet.create({
         flex: 1
     },
     scroller: {
-        backgroundColor: '#ffffff'
+        height: vh(100),
+        flex: 1,
+        backgroundColor: '#ffffff',
     },
     grid: {
-        flex: 1,
         backgroundColor: '#800080'
        
     },
@@ -43,9 +45,9 @@ const styles = StyleSheet.create({
 
 });
 
-Separator =  () => {
+function Separator() {
     return <View style={styles.separator} />;
-  }
+}
 
 export default class List extends Component {
 
@@ -72,44 +74,51 @@ export default class List extends Component {
         return(
 
             <View style={styles.main}>
-                <ScrollView style={styles.scroller}>
-                    <View style={styles.grid}>
-                        <Text style={styles.sectionHeader}>DVD</Text>
-                        <FlatGrid
-                            spacing={0}
-                            items={dvd}
-                            renderItem={({ item }) => (<Item item={item} key={item.id} addToList={this.props.addToList} bgcolor="#0000FF" txcolor="#ffffff"/>)}
-                            />
+                <View style={styles.scroller}>
+                    <ScrollView>
+                        <View style={styles.grid}>
+                            <Text style={styles.sectionHeader}>DVD</Text>
+                            <FlatGrid
+                                itemDimension={140}
+                                spacing={0}
+                                items={dvd}
+                                renderItem={({ item }) => (<Item item={item} key={item.id} addToList={this.props.addToList} bgcolor="#0000FF" txcolor="#ffffff"/>)}
+                                />
                         </View>
-                    <Separator />
-                    <View style={styles.grid}>
-                    <Text style={styles.sectionHeader}>Book</Text>
-                        <FlatGrid
-                            spacing={0}
-                            items={book}
-                            renderItem={({ item }) => (<Item item={item} key={item.id} addToList={this.props.addToList} bgcolor="#FFFF00" txcolor="#000000"/>)}
-                            />
-                            
+                        <Separator />
+                        <View style={styles.grid}>
+                            <Text style={styles.sectionHeader}>Book</Text>
+                            <FlatGrid
+                                itemDimension={140}
+                                spacing={0}
+                                items={book}
+                                renderItem={({ item }) => (<Item item={item} key={item.id} addToList={this.props.addToList} bgcolor="#FFFF00" txcolor="#000000"/>)}
+                                />
+                                
                         </View>
-                    <Separator />
-                    <View style={styles.grid}>
-                    <Text style={styles.sectionHeader}>Playroom Material</Text>
-                        <FlatGrid
-                            spacing={0}
-                            items={pm}
-                            renderItem={({ item }) => (<Item item={item} key={item.id} addToList={this.props.addToList} bgcolor="#008000" txcolor="#ffffff"/>)}
-                            />
-                    </View>
-                    <Separator />
-                    <View style={styles.grid}>
-                        <Text style={styles.sectionHeader}>Merchandise</Text>
-                        <FlatGrid
-                            spacing={0}
-                            items={merchandise}
-                            renderItem={({ item }) => (<Item item={item} key={item.id} addToList={this.props.addToList} bgcolor="#FFC0CB" txcolor="#000000"/>)}
-                            />
-                    </View>
-                </ScrollView>
+                        <Separator />
+                        <View style={styles.grid}>
+                        <Text style={styles.sectionHeader}>Playroom Material</Text>
+                            <FlatGrid
+                                itemDimension={140}
+                                spacing={0}
+                                items={pm}
+                                renderItem={({ item }) => (<Item item={item} key={item.id} addToList={this.props.addToList} bgcolor="#008000" txcolor="#ffffff"/>)}
+                                />
+                        </View>
+                        <Separator />
+                        <View style={styles.grid}>
+                            <Text style={styles.sectionHeader}>Merchandise</Text>
+                            <FlatGrid
+                                itemDimension={140}
+                                spacing={0}
+                                items={merchandise}
+                                renderItem={({ item }) => (<Item item={item} key={item.id} addToList={this.props.addToList} bgcolor="#FFC0CB" txcolor="#000000"/>)}
+                                />
+                        </View>
+                    </ScrollView>
+                </View>
+                
             </View>
         )
     }

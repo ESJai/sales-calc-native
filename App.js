@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff"
   },
 
-  container: {
+  statusbar: {
     backgroundColor: "#fff",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
   }
@@ -19,9 +19,12 @@ export default class App extends Component {
 
   render() {
     return(
-      <SafeAreaView style={styles.main}>
-        <View style={styles.container}/>
-        <Main/>
+      <SafeAreaView style={styles.main} >
+        <View style={styles.statusbar}/>
+        <View>
+          <Main/>
+        </View>
+        
       </SafeAreaView>
       
       

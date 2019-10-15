@@ -7,7 +7,6 @@ import Cart from './cart/Cart';
 const styles = StyleSheet.create({
 
     main: {
-        flex: 1,
         flexDirection: 'row',
         alignItems: 'stretch',
     },
